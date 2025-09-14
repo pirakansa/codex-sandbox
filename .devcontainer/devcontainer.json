@@ -1,0 +1,13 @@
+{
+    "initializeCommand": "${localWorkspaceFolder}/.devcontainer/init.sh",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "CONTAINER_USERNAME": "${localEnv:USER:builder}",
+            "CONTAINER_UID": "${localEnv:USERID:1000}"
+        }
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/work/${localWorkspaceFolderBasename},type=bind,consistency=cached",
+    "workspaceFolder": "/work/${localWorkspaceFolderBasename}",
+    "remoteUser": "${localEnv:USER:builder}"
+}
