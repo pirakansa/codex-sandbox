@@ -7,6 +7,9 @@
             "CONTAINER_USERID": "${localEnv:USERID:1000}"
         }
     },
+    "mounts": [
+        "source=${localEnv:HOME}/.codex,target=/home/${localEnv:USER:builder}/.codex,type=bind,consistency=cached"
+    ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/work/${localWorkspaceFolderBasename},type=bind,consistency=cached",
     "workspaceFolder": "/work/${localWorkspaceFolderBasename}",
     "remoteUser": "${localEnv:USER:builder}"

@@ -6,7 +6,11 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LC_ALL=C.UTF-8
 
 RUN apt update -y && \
-    apt install -y curl git sudo zstd
+    apt install -y curl git sudo zstd && \
+
+    curl -L https://github.com/openai/codex/releases/download/rust-v0.34.0/codex-x86_64-unknown-linux-musl.zst -o codex.zst && \
+    zstd -d codex.zst -o /usr/local/bin/codex && \
+    chmod a+x /usr/local/bin/codex
 
 
 ARG CONTAINER_USERNAME=builder
