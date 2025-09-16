@@ -10,7 +10,9 @@ RUN apt update -y && \
 
     curl -L https://github.com/openai/codex/releases/download/rust-v0.36.0/codex-x86_64-unknown-linux-musl.zst -o codex.zst && \
     zstd -d codex.zst -o /usr/local/bin/codex && \
-    chmod a+x /usr/local/bin/codex
+    chmod a+x /usr/local/bin/codex && \
+
+    rustup component add rustfmt clippy
 
 
 ARG CONTAINER_USERNAME=builder
@@ -30,4 +32,3 @@ USER ${CONTAINER_USERNAME}
 
 ###### working directory
 WORKDIR /work
-
