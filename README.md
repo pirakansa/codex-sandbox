@@ -5,7 +5,7 @@ Rust 製CLIツールの雛形を含みます。GitHub Flowで運用します。
 ## 使い方
 
 - 初回セットアップ: `cargo build`
-- ローカル実行: `cargo run -- hello --name Rust`
+- ローカル実行: `cargo run -- --name Rust`
 - テスト: `cargo test`
 - フォーマット: `cargo fmt --all`
 - 静的解析: `cargo clippy --all-targets -- -D warnings`
