@@ -1,5 +1,5 @@
 use anyhow::Result;
-use clap::{Parser, Subcommand};
+use clap::Parser;
 use tracing::{info, Level};
 use tracing_subscriber::EnvFilter;
 
@@ -10,18 +10,9 @@ struct Cli {
     #[arg(short, long, action = clap::ArgAction::Count)]
     verbose: u8,
 
-    #[command(subcommand)]
-    command: Commands,
-}
-
-#[derive(Subcommand, Debug)]
-enum Commands {
-    /// 挨拶を表示
-    Hello {
-        /// 名前（省略時は "world"）
-        #[arg(short, long)]
-        name: Option<String>,
-    },
+    /// 名前（省略時は "world"）
+    #[arg(short, long)]
+    name: Option<String>,
 }
 
 fn init_tracing(verbosity: u8) {
@@ -46,12 +37,8 @@ fn main() -> Result<()> {
     init_tracing(cli.verbose);
     info!(?cli, "starting CLI");
 
-    match cli.command {
-        Commands::Hello { name } => {
-            let msg = cli_template::greet(name.as_deref());
-            println!("{}", msg);
-        }
-    }
+    let msg = cli_template::greet(cli.name.as_deref());
+    println!("{}", msg);
 
     Ok(())
 }
