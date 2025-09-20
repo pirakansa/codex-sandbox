@@ -8,8 +8,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN apt update -y && \
     apt install -y curl git sudo zstd && \
 
-    curl -L https://github.com/openai/codex/releases/download/rust-v0.36.0/codex-x86_64-unknown-linux-musl.zst -o codex.zst && \
-    zstd -d codex.zst -o /usr/local/bin/codex && \
+    curl -L https://github.com/openai/codex/releases/download/rust-v0.36.0/codex-x86_64-unknown-linux-musl.zst \
+    | zstd -d > /usr/local/bin/codex && \
     chmod a+x /usr/local/bin/codex && \
 
     rustup component add rustfmt clippy
