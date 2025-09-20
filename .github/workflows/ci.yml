@@ -20,14 +20,19 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Format check
-        run: cargo fmt --all -- --check
+        run: make fmt-check
 
       - name: Clippy
-        run: cargo clippy --all-targets -- -D warnings
+        run: make clippy
 
       - name: Build
-        run: cargo build --release
+        run: make build-release
 
       - name: Test
-        run: cargo test --all -- --nocapture
+        run: make test
 
+      - name: Install cargo-audit
+        run: cargo install cargo-audit --locked
+
+      - name: Audit
+        run: make audit

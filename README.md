@@ -4,11 +4,15 @@ Rust 製CLIツールの雛形を含みます。GitHub Flowで運用します。
 
 ## 使い方
 
-- 初回セットアップ: `cargo build`
-- ローカル実行: `cargo run -- --name Rust`
-- テスト: `cargo test`
-- フォーマット: `cargo fmt --all`
-- 静的解析: `cargo clippy --all-targets -- -D warnings`
+- 初回セットアップ: `make build`
+- ローカル実行: `make run`
+- テスト: `make test`
+- フォーマット: `make fmt`（確認のみは `make fmt-check`）
+- 静的解析: `make clippy`
+- 依存脆弱性チェック: `make audit`
+- 一括実行（CI相当）: `make ci`
+
+タスク一覧は `make` もしくは `make help` で確認できます。
 
 ## 構成
 
