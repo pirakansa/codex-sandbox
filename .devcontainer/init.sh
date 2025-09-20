@@ -5,11 +5,15 @@ if [ -f .env ]; then
 fi
 
 if [ "$USERNAME" = "" ]; then
-    echo "USERNAME=$USER" >> .env
+    echo "USERNAME=$(id -u $USER -n)" >> .env
 fi
 
 if [ "$USERID" = "" ]; then
     echo "USERID=$(id -u $USER)" >> .env
+fi
+
+if [ "$USERGROUPID" = "" ]; then
+    echo "USERGROUPID=$(id -g $USER)" >> .env
 fi
 
 

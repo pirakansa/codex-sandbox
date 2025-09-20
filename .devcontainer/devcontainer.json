@@ -4,7 +4,8 @@
         "dockerfile": "Dockerfile",
         "args": {
             "CONTAINER_USERNAME": "${localEnv:USER:builder}",
-            "CONTAINER_USERID": "${localEnv:USERID:1000}"
+            "CONTAINER_USERID": "${localEnv:USERID:1000}",
+            "CONTAINER_USERGROUPID": "${localEnv:USERGROUPID:1000}"
         }
     },
     "mounts": [
