@@ -17,9 +17,8 @@ RUN apt update -y && \
 
 ARG CONTAINER_USERNAME=builder
 ARG CONTAINER_USERID=1000
-ARG CONTAINER_USERGROUPID=1000
 
-RUN useradd -u ${CONTAINER_USERID} -g ${CONTAINER_USERGROUPID} -s /bin/bash -m ${CONTAINER_USERNAME} && \
+RUN useradd -u ${CONTAINER_USERID} -s /bin/bash -m ${CONTAINER_USERNAME} && \
     install --owner=${CONTAINER_USERNAME} --directory /work && \
     echo "${CONTAINER_USERNAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/container && \
     chmod 440 /etc/sudoers.d/container && \
