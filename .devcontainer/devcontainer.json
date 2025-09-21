@@ -3,15 +3,14 @@
     "build": {
         "dockerfile": "Dockerfile",
         "args": {
-            "CONTAINER_USERNAME": "${localEnv:USER:builder}",
-            "CONTAINER_USERID": "${localEnv:USERID:1000}",
-            "CONTAINER_USERGROUPID": "${localEnv:USERGROUPID:1000}"
+            "CONTAINER_USERNAME": "${localEnv:USERNAME:builder}",
+            "CONTAINER_USERID": "${localEnv:USERID:1000}"
         }
     },
     "mounts": [
-        "source=${localEnv:HOME}/.codex,target=/home/${localEnv:USER:builder}/.codex,type=bind,consistency=cached"
+        "source=${localEnv:HOME}/.codex,target=/home/${localEnv:USERNAME:builder}/.codex,type=bind,consistency=cached"
     ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/work/${localWorkspaceFolderBasename},type=bind,consistency=cached",
     "workspaceFolder": "/work/${localWorkspaceFolderBasename}",
-    "remoteUser": "${localEnv:USER:builder}"
+    "remoteUser": "${localEnv:USERNAME:builder}"
 }
