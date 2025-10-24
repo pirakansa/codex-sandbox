@@ -1,5 +1,9 @@
 {
     "recommendations": [
-        "1YiB.rust-bundle"
+        "1YiB.rust-bundle",
+        "github.copilot",
+        "github.copilot-chat",
+        "google.geminicodeassist",
+        "openai.chatgpt"
     ]
 }
